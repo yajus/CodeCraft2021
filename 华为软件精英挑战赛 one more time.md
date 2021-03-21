@@ -1,5 +1,6 @@
-# CodeCraft2021
-华为软件精英挑战赛2021
+### 华为软件精英挑战赛 one more time
+
+-----
 
 #### 服务器
 
@@ -71,22 +72,3 @@ W行 每行(虚拟机 ID, 目的服务器 ID)或(虚拟机 ID, 目的服务器 I
 
 * 针对每一条请求 输出虚拟机部署 --格式（服务器 ID)或者(服务器 ID, 部署节点)
 
-
-
-
-
-
-
-### 致谢
-
-感谢以下人员对本仓库做出的贡献。
-
-<a href="https://github.com/yajus">
-    <img src="https://avatars3.githubusercontent.com/u/39403534?s=400&v=4" width="50px">
-</a> 
-<a href="https://github.com/JoeOfJoe">
-    <img src="https://avatars1.githubusercontent.com/u/49895736?s=400&v=4" width="50px">
-</a>
-<a href="https://github.com/yokimZhang">
-    <img src="https://avatars1.githubusercontent.com/u/40846456?s=400&v=4" width="50px">
-</a>
