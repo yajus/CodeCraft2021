@@ -3,27 +3,30 @@ package com.huawei.java.main;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+//程序入口函数
 
-//请求删除
-//class DeleteVMRequest
-//{
-//	int ID;
-//	public DeleteVMRequest(int ID)
-//	{
-//		this.ID = ID;
-//	}
-//}
+
+
 public class Main {
 	
 	public static void main(String[] args) {
 		FileInOut a = new FileInOut();
 		String path= "/home/zhengxp/桌面/华为软件精英挑战赛2021/training-1.txt";
 		try{
-			a.FileIn(path);
+			a.FileIn(path);//test
 		}
 		catch(Exception e)
 		{
 			
 		}
+//排序类测试
+//		range test =  new range(a);//
+//		for(int i = 0;i<test.ServicesRangeByCpuAndGpu.size();i++)
+//		System.out.println(test.ServicesRangeByCpuAndGpu.get(i).stype);
+//		test.RangeByCpuAndGpu();
+		
+//		System.out.println("next");
+//		for(int i = 0;i<test.ServicesRangeByCpuAndGpu.size();i++)
+//		System.out.println(test.ServicesRangeByCpuAndGpu.get(i).stype);
     }
 }

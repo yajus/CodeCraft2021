@@ -1,5 +1,5 @@
 package com.huawei.java.main;
-
+//输入数据
 //虚拟机
 public class VM {
 	

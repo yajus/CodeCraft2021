@@ -6,16 +6,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //文件输入输出
 public class FileInOut {
 	int N; //服务器类型数量
 	int M; //虚拟机类型数量
 	int T; //T天请求
-	int[] AllT; //每天请求数目
-	ArrayList<Service> ServiceTypes  = new ArrayList<Service>(); //服务器类型
-	ArrayList<VM> VMTypes = new ArrayList<VM>();//虚拟机类型
-	ArrayList<VMPerDay> AllRequests= new ArrayList<VMPerDay>();
+//	int[] AllT; //每天请求数目
+	HashMap<String,Service> ServiceTypes  = new HashMap<String,Service>(); //服务器类型
+	HashMap<String,VM> VMTypes = new HashMap<String,VM>();//虚拟机类型
+	ArrayList<VMPerDay> AllRequests= new ArrayList<VMPerDay>();//T天的请求数据
     
 	public void FileIn(String path) throws IOException
 	{
@@ -36,7 +37,7 @@ public class FileInOut {
 			line = line.replace(" ","");
 			String[] data = line.split(",");
 			//Service(String stype,int cpu,int memory,int hardcost,int datecost)
-			ServiceTypes.add(new Service(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4])));
+			ServiceTypes.put(data[0],new Service(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),Integer.parseInt(data[4])));
 //			System.out.println(ServiceTypes.get(0).datecost);
 		}
 		
@@ -51,7 +52,7 @@ public class FileInOut {
 			line = line.replace(" ","");
 			String[] data = line.split(",");
 			//VM(String vtype,int cpu,int memory,int oneortwo)
-			VMTypes.add(new VM(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3])));
+			VMTypes.put(data[0],new VM(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3])));
 //			System.out.println(VMTypes.get(0).vtype);
 		}
 		
@@ -59,7 +60,7 @@ public class FileInOut {
 		//读取T天的数据
 		line = br.readLine();
 		T = Integer.parseInt(line);
-		System.out.println(T);
+//		System.out.println(T);
 		VMPerDay day;
 		for(int i =1;i<=T;i++)
 		{

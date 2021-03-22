@@ -1,5 +1,5 @@
 package com.huawei.java.main;
-
+//输入数据
 //服务器
 public class Service {
 	String stype;
