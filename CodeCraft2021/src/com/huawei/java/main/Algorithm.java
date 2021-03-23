@@ -12,9 +12,16 @@ public class Algorithm {
 	VMState allvm = new VMState(); //所有的vm
 	ServicesState allservice = new ServicesState(); //所有的vm
 	range allrange;
-	BuyService resultbuy = new BuyService();
+	
+	BuyService resultbuy = new BuyService();//最终服务器购买结果
+	ServiceTypeAndNum newdaybuy = null;
+	
+	arrangelist nowarrange = null;
+	arrangevm resultarrange = new arrangevm();//最终虚拟机安排
+	
 	void ProcessEveryday(FileInOut datas,int n)//n表示第几天
 	{
+		newdaybuy = new ServiceTypeAndNum();
 		allrange = new range(datas);
 		ArrayList<VMRequest> DeleteTodayDatas = datas.AllRequests.get(n-1).deletedatas;
 		ArrayList<VMRequest> AddTodayDatas = datas.AllRequests.get(n-1).adddatas;
@@ -28,6 +35,8 @@ public class Algorithm {
 			allservice.removevm(vm);
 			
 		}
+		OwnServices nowservice;
+		nowarrange = new arrangelist();
 		for(int i = 0;i<AddTodayDatas.size();i++)
 		{
 			adddata = AddTodayDatas.get(i);
@@ -41,12 +50,13 @@ public class Algorithm {
 			{
 				//扩容操作
 				allrange.RangeByCpuAndGpu();
-				SID = allservice.update(allrange.ServicesRangeByCpuAndMemory,vmdata,adddata.ID);
-				
+				nowservice = allservice.update(allrange.ServicesRangeByCpuAndMemory,vmdata,adddata.ID);
+				 SID = nowservice.ID;
 				if(vmdata.oneortwo==1)
-				Servicepoint = 1;
+					Servicepoint = 1;
 				if(vmdata.oneortwo==2)
 					Servicepoint = 0; 
+				newdaybuy.buy(nowservice.stype);
 			}
 			else
 			{
@@ -61,9 +71,12 @@ public class Algorithm {
 				Servicepoint= 0;
 			
 			}
-			allvm.addvm(vmdata, VID, SID, Servicepoint);;
+			nowarrange.add(SID, Servicepoint);
+			allvm.addvm(vmdata, VID, SID, Servicepoint);
 			allservice.addvm(vmdata,VID, SID, Servicepoint);
 		}
+		this.resultarrange.add(nowarrange);
+		this.resultbuy.add(newdaybuy);
 		
 	}
 	

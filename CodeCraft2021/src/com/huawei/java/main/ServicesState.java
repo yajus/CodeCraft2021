@@ -51,7 +51,7 @@ class OwnServices
 public class ServicesState {
 	HashMap<Integer,OwnServices> runningServices = new HashMap<Integer,OwnServices>();//当前正在运行的服务器
 	HashMap<Integer,OwnServices> stopServices = new HashMap<Integer,OwnServices>();//当前没在运行的服务器
-	int NumOfService=0;
+	int NumOfService=-1;
 	//删除虚拟机
 	void removevm(OwnVM vmdeleted)
 	{
@@ -226,8 +226,8 @@ public class ServicesState {
 		return hereservice;
 	}
 	
-	
-	int update(ArrayList<Service> ServiceArray,VM vmdata,int VID)
+	//拓展服务器
+	OwnServices update(ArrayList<Service> ServiceArray,VM vmdata,int VID)
 	{
 		OwnServices hereservice = null;
 		if(vmdata.oneortwo==2)
@@ -254,7 +254,7 @@ public class ServicesState {
 				}
 			}
 		}
-		return hereservice.ID;
+		return hereservice;
 	}
 	
 }

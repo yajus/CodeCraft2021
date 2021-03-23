@@ -10,14 +10,21 @@ import java.util.HashMap;
 public class Main {
 	
 	public static void main(String[] args) {
-		FileInOut a = new FileInOut();
+		FileInOut file = new FileInOut();
 		String path= "/home/zhengxp/桌面/华为软件精英挑战赛2021/training-1.txt";
 		try{
-			a.FileIn(path);//test
+			file.FileIn(path);//test
+			System.out.println("OK");
 		}
 		catch(Exception e)
 		{
 			
+		}
+		Algorithm method = new Algorithm();
+		for(int i = 1;1<=file.T;i++)
+		{
+			System.out.println(i);
+			method.ProcessEveryday(file, i);
 		}
 //排序类测试
 //		range test =  new range(a);//
