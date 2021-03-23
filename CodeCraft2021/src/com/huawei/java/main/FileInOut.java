@@ -136,15 +136,15 @@ public class FileInOut {
     			int service_num = serviceTypeAndNums.get(i).mapTypeNum.size(); //mapTypeNum key/value: service type/number 
     			int alist_size = arrangelists.get(i).alist.size(); //alist: arrangebase(ServiceID, point)
 //    			bw.write("(purchase, " + service_num + ")\n");
-    			System.out.println("(purchase, " + service_num + ")\n");
+    			System.out.print("(purchase, " + service_num + ")\n");
     			for(String str: serviceTypeAndNums.get(i).mapTypeNum.keySet()) {
     				int value = serviceTypeAndNums.get(i).mapTypeNum.get(str);
     				String out = "(" + str + ", " + value + ")\n";
 //    				bw.write(out);
-    				System.out.println(out);
+    				System.out.print(out);
     			}
 //    			bw.write("(migration, 0)\n");
-    			System.out.println("(migration, 0)\n");
+    			System.out.print("(migration, 0)\n");
     			for(arrangebase id_point: arrangelists.get(i).alist) {
     				int id = id_point.ServiceID, point = id_point.point;
     				String out = "";
@@ -157,7 +157,7 @@ public class FileInOut {
     				}
 //    				System.out.println(out);
 //    				bw.write(out);
-    				System.out.println(out);
+    				System.out.print(out);
 //    				bw.flush();
     			}
     		}

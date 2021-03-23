@@ -1,7 +1,5 @@
 package com.huawei.java.main;
-
 import java.util.ArrayList;
-
 //进行服务器的调度
 public class Algorithm {
 	//VMState 

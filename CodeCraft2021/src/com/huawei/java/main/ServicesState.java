@@ -108,12 +108,12 @@ public class ServicesState {
 			 {
 				 //有待优化
 				 OwnServices serviceinf = i.getValue();
-				 if(serviceinf.cpu/2-serviceinf.usedcpuA>=cpu&&serviceinf.memory/2-serviceinf.usedmemoryA>=memory)
+				 if(serviceinf.cpu/2-serviceinf.usedcpuA>cpu&&serviceinf.memory/2-serviceinf.usedmemoryA>memory)
 				 {
 					 return Integer.toString(serviceinf.ID)+".A";
 				 }
 				 
-				 else if(serviceinf.cpu/2-serviceinf.usedcpuB>=cpu&&serviceinf.memory/2-serviceinf.usedmemoryB>=memory)
+				 else if(serviceinf.cpu/2-serviceinf.usedcpuB>cpu&&serviceinf.memory/2-serviceinf.usedmemoryB>memory)
 				 {
 					 return Integer.toString(serviceinf.ID)+".B";
 				 }
@@ -123,13 +123,13 @@ public class ServicesState {
 			 {
 				 //有待优化
 				 OwnServices serviceinf = i.getValue();
-				 if(serviceinf.cpu/2-serviceinf.usedcpuA>=cpu&&serviceinf.memory/2-serviceinf.usedmemoryA>=memory)
+				 if(serviceinf.cpu/2-serviceinf.usedcpuA>cpu&&serviceinf.memory/2-serviceinf.usedmemoryA>memory)
 				 {
 					 StartService(serviceinf.ID);
 					 return Integer.toString(serviceinf.ID)+".A";
 				 }
 				 
-				 else if(serviceinf.cpu/2-serviceinf.usedcpuB>=cpu&&serviceinf.memory/2-serviceinf.usedmemoryB>=memory)
+				 else if(serviceinf.cpu/2-serviceinf.usedcpuB>cpu&&serviceinf.memory/2-serviceinf.usedmemoryB>memory)
 				 {
 					 StartService(serviceinf.ID);
 					 return Integer.toString(serviceinf.ID)+".B";
@@ -144,7 +144,7 @@ public class ServicesState {
 			 {
 				 //有待优化
 				 OwnServices serviceinf = i.getValue();
-				 if(serviceinf.cpu/2-serviceinf.usedcpuA>=cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryA>=memory/2&&serviceinf.cpu/2-serviceinf.usedcpuB>=cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryB>=memory/2)
+				 if(serviceinf.cpu/2-serviceinf.usedcpuA>cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryA>memory/2&&serviceinf.cpu/2-serviceinf.usedcpuB>cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryB>memory/2)
 				 {
 					 return Integer.toString(serviceinf.ID)+".AB";
 				 }
@@ -154,7 +154,7 @@ public class ServicesState {
 			 {
 				 //有待优化
 				 OwnServices serviceinf = i.getValue();
-				 if(serviceinf.cpu/2-serviceinf.usedcpuA>=cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryA>=memory/2&&serviceinf.cpu/2-serviceinf.usedcpuB>=cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryB>=memory/2)
+				 if(serviceinf.cpu/2-serviceinf.usedcpuA>cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryA>memory/2&&serviceinf.cpu/2-serviceinf.usedcpuB>cpu/2&&serviceinf.memory/2-serviceinf.usedmemoryB>memory/2)
 				 {
 					 StartService(serviceinf.ID);
 					 return Integer.toString(serviceinf.ID)+".AB";
