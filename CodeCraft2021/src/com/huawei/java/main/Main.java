@@ -11,21 +11,24 @@ public class Main {
 	
 	public static void main(String[] args) {
 		FileInOut file = new FileInOut();
-		String path= "/home/zhengxp/桌面/华为软件精英挑战赛2021/training-1.txt";
+		String path= "/Users/zhengxiaopeng/Desktop/华为软件精英挑战赛2021/training-2.txt";
 		try{
 			file.FileIn(path);//test
-			System.out.println("OK");
+//			System.out.println("OK");
 		}
 		catch(Exception e)
 		{
 			
 		}
 		Algorithm method = new Algorithm();
-		for(int i = 1;1<=file.T;i++)
+		for(int i = 1;i<=file.T;i++)
 		{
-			System.out.println(i);
+//			System.out.println(i);
 			method.ProcessEveryday(file, i);
 		}
+		file.FileOut(method);
+		
+		
 //排序类测试
 //		range test =  new range(a);//
 //		for(int i = 0;i<test.ServicesRangeByCpuAndGpu.size();i++)

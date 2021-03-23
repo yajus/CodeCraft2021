@@ -2,6 +2,7 @@ package com.huawei.java.main;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Map;
 
 //排序函数 给算法中的新增服务器类型选择提供参考意见
 public class range {
@@ -9,13 +10,17 @@ public class range {
 	//List<>单位memory 硬件和维护成本
 //	List<>单位cpu 硬件和维护成本
 	//List<>单位memory 硬件成本
-	ArrayList<Service> ServicesRangeByCpuAndMemory = new ArrayList<Service>();
+	ArrayList<Service> ServicesRangeByCpuAndMemory;
 	range(FileInOut datas)
 	{
-		for(int i =0;i<datas.ServiceTypes.size();i++)
+		ServicesRangeByCpuAndMemory = new ArrayList<Service>();
+		for(Map.Entry<String, Service> i : datas.ServiceTypes.entrySet())
 		{
-			ServicesRangeByCpuAndMemory.add(datas.ServiceTypes.get(i));
+			if(i.getValue()==null)
+				System.out.println("isnull");
+			ServicesRangeByCpuAndMemory.add(i.getValue());
 		}
+		
 	}
 	void RangeByCpuAndGpu()
 	{

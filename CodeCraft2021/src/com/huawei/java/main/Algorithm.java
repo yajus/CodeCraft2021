@@ -42,6 +42,7 @@ public class Algorithm {
 			adddata = AddTodayDatas.get(i);
 			String vtype = adddata.vtype;//虚拟机类型
 			VM vmdata = datas.VMTypes.get(vtype);//要添加的虚拟机数据
+
 			int VID = adddata.ID;//虚拟机ID
 			String IDandPoint = allservice.ChoiceService(vmdata);//选择服务器
 			int Servicepoint=0;
@@ -52,15 +53,15 @@ public class Algorithm {
 				allrange.RangeByCpuAndGpu();
 				nowservice = allservice.update(allrange.ServicesRangeByCpuAndMemory,vmdata,adddata.ID);
 				 SID = nowservice.ID;
-				if(vmdata.oneortwo==1)
+				if(vmdata.oneortwo==0)
 					Servicepoint = 1;
-				if(vmdata.oneortwo==2)
+				if(vmdata.oneortwo==1)
 					Servicepoint = 0; 
 				newdaybuy.buy(nowservice.stype);
 			}
 			else
 			{
-			String[] IDPoint=IDandPoint.split(".");
+			String[] IDPoint=IDandPoint.split("\\.");
 			SID = Integer.parseInt(IDPoint[0]);//虚拟机号码
 			
 			if((IDPoint[1].equals("A")))

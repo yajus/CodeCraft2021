@@ -58,10 +58,10 @@ public class ServicesState {
 		OwnServices hereservice = this.runningServices.get(vmdeleted.ServiceID);//获取当前虚拟机所在服务器
 		int oneortwo = vmdeleted.oneortwo;//判断虚拟机节点数
 		int Servicepoint = vmdeleted.Servicepoint;//判断虚拟机节点数
-		if(oneortwo ==2)//双节点情况
+		if(oneortwo ==1)//双节点情况
 		{
-			hereservice.AVMs.remove(vmdeleted.ID);
-			hereservice.BVMs.remove(vmdeleted.ID);
+			hereservice.AVMs.remove(hereservice.AVMs.indexOf(vmdeleted.ID));
+			hereservice.BVMs.remove(hereservice.BVMs.indexOf(vmdeleted.ID));
 			hereservice.usedcpuA -= vmdeleted.cpu/2;
 			hereservice.usedcpuB -= vmdeleted.cpu/2;
 			hereservice.usedmemoryA -= vmdeleted.memory/2;
@@ -72,13 +72,13 @@ public class ServicesState {
 		//单节点情况
 		else if(Servicepoint==1)
 		{
-			hereservice.AVMs.remove(vmdeleted.ID);
+			hereservice.AVMs.remove(hereservice.AVMs.indexOf(vmdeleted.ID));
 			hereservice.usedcpuA -= vmdeleted.cpu;
 			hereservice.usedmemoryA -= vmdeleted.memory;
 		}
 		else if(Servicepoint==2)
 		{
-			hereservice.BVMs.remove(vmdeleted.ID);
+			hereservice.BVMs.remove(hereservice.BVMs.indexOf(vmdeleted.ID));
 			hereservice.usedcpuB -= vmdeleted.cpu;
 			hereservice.usedmemoryB -= vmdeleted.memory;
 		}
@@ -101,7 +101,7 @@ public class ServicesState {
 		int oneortwo = vmdata.oneortwo;
 		
 		//单节点
-		if(oneortwo == 1)
+		if(oneortwo == 0)
 		{
 			//从正在运行的服务器里找
 			 for(Entry<Integer,OwnServices> i:this.runningServices.entrySet())
@@ -137,7 +137,7 @@ public class ServicesState {
 			 }
 		}
 		//双节点
-		if(oneortwo == 2)
+		if(oneortwo == 1)
 		{
 			//从正在运行的服务器里找
 			 for(Entry<Integer,OwnServices> i:this.runningServices.entrySet())
@@ -190,7 +190,7 @@ public class ServicesState {
 		if(hereServicepoint ==0)//双节点情况
 		{
 			hereservice.AVMs.add(VID);
-			hereservice.BVMs.remove(VID);
+			hereservice.BVMs.add(VID);
 			hereservice.usedcpuA += vmdata.cpu/2;
 			hereservice.usedcpuB += vmdata.cpu/2;
 			hereservice.usedmemoryA += vmdata.memory/2;
@@ -230,7 +230,8 @@ public class ServicesState {
 	OwnServices update(ArrayList<Service> ServiceArray,VM vmdata,int VID)
 	{
 		OwnServices hereservice = null;
-		if(vmdata.oneortwo==2)
+		//双节点
+		if(vmdata.oneortwo==1)
 		{
 			for(Service i:ServiceArray)
 			{
@@ -242,7 +243,8 @@ public class ServicesState {
 				}
 			}
 		}
-		if(vmdata.oneortwo==1)
+		//单节点
+		if(vmdata.oneortwo==0)
 		{
 			for(Service i:ServiceArray)
 			{
