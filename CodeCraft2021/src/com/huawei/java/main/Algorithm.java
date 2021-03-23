@@ -11,8 +11,11 @@ public class Algorithm {
 	//
 	VMState allvm = new VMState(); //所有的vm
 	ServicesState allservice = new ServicesState(); //所有的vm
+	range allrange;
+	BuyService resultbuy = new BuyService();
 	void ProcessEveryday(FileInOut datas,int n)//n表示第几天
 	{
+		allrange = new range(datas);
 		ArrayList<VMRequest> DeleteTodayDatas = datas.AllRequests.get(n-1).deletedatas;
 		ArrayList<VMRequest> AddTodayDatas = datas.AllRequests.get(n-1).adddatas;
 		VMRequest deldata;
@@ -29,19 +32,39 @@ public class Algorithm {
 		{
 			adddata = AddTodayDatas.get(i);
 			String vtype = adddata.vtype;//虚拟机类型
+			VM vmdata = datas.VMTypes.get(vtype);//要添加的虚拟机数据
 			int VID = adddata.ID;//虚拟机ID
-			int ID = allservice.ChoiceService();
-			OwnVM  vm= allvm.addvm(datas.VMTypes.get(vtype),VID,ServicesState allservice);//被移除的虚拟机
-//			allservice.removevm(vm);
+			String IDandPoint = allservice.ChoiceService(vmdata);//选择服务器
+			int Servicepoint=0;
+			int SID=0;
+			if(IDandPoint==null)
+			{
+				//扩容操作
+				allrange.RangeByCpuAndGpu();
+				SID = allservice.update(allrange.ServicesRangeByCpuAndMemory,vmdata,adddata.ID);
+				
+				if(vmdata.oneortwo==1)
+				Servicepoint = 1;
+				if(vmdata.oneortwo==2)
+					Servicepoint = 0; 
+			}
+			else
+			{
+			String[] IDPoint=IDandPoint.split(".");
+			SID = Integer.parseInt(IDPoint[0]);//虚拟机号码
 			
+			if((IDPoint[1].equals("A")))
+				Servicepoint= 1;
+			if((IDPoint[1].equals("B")))
+				Servicepoint= 2;
+			if((IDPoint[1].equals("AB")))
+				Servicepoint= 0;
+			
+			}
+			allvm.addvm(vmdata, VID, SID, Servicepoint);;
+			allservice.addvm(vmdata,VID, SID, Servicepoint);
 		}
 		
 	}
-	
-	void deleteVM(int day)
-	{
-		
-	}
-//	void 
 	
 }

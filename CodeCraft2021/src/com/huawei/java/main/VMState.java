@@ -31,11 +31,12 @@ public class VMState {
 		return tmp;
 	}
 	
-	OwnVM addvm(VM vm,int VID,int SID)
+	void addvm(VM vm,int VID,int SID,int Servicepoint)
 	{
 		OwnVM tmp = new OwnVM(vm,VID);
-		
-		return tmp;
+		tmp.ServiceID = SID;
+		tmp.Servicepoint = Servicepoint;
+		allVM.put(tmp.ID, tmp);
 		
 	}
 	
